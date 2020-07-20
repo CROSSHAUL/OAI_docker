@@ -47,7 +47,7 @@ echo 'UE'$ue_number':
 #TODO: UE does not connect if set, to be fixed in the UE
 #    EHPLMN_LIST= ("20811", "20813");
     EHPLMN_LIST= ();
-};' >> /ue_folder/openair3/NAS/TOOLS/ue_eurecom_test_sfr.conf
+};' >> /root/ue/openair3/NAS/TOOLS/ue_eurecom_test_sfr.conf
 
     i=$((i+1))
 done
