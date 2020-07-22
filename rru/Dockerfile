@@ -1,12 +1,21 @@
-FROM laboraufg/enb-openairsim:latest
+FROM base-ran-nfapi
 
-USER root
+VOLUME ["/config_files"]
 
-COPY rru.fdd.band7.conf /root/enb/ci-scripts/conf_files/rru.fdd.band7.conf
-COPY exec.sh /exec.sh
+ENV USER=root
+ENV DEBIAN_FRONTEND=noninteractive
 
-RUN apt-get update && apt-get install linux-image-$(uname -r) linux-headers-$(uname -r) software-properties-common git wget git build-essential sudo psmisc vim -yq
-RUN apt-get update && apt-get install -y --no-install-recommends apt-utils
-# RUN /bin/bash -c "source /root/enb/oaienv && /root/enb/cmake_targets/build_oai -I  --install-system-files --install-optional-packages"
+WORKDIR /openairinterface5g/
 
-ENTRYPOINT ["/exec.sh"]
+RUN /bin/bash -c "sed -i '102i\ host=NULL;\' ./openair3/NAS/UE/API/USER/user_api.c "
+
+RUN /bin/bash -c "source oaienv; ./cmake_targets/build_oai --UE"
+
+COPY ue_eurecom_test_sfr.conf ./openair3/NAS/TOOLS/ue_eurecom_test_sfr.conf
+
+RUN /bin/bash -c "./targets/bin/conf2uedata -c ./openair3/NAS/TOOLS/ue_eurecom_test_sfr.conf -o ."
+
+COPY ran.sh ./ran.sh
+
+RUN chmod +x ran.sh
+
