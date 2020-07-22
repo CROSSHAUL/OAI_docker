@@ -1,4 +1,4 @@
-FROM base-ran-nfapi
+FROM base-nfapi
 
 VOLUME ["/dev/bus/usb"]
 VOLUME ["/config_files"]

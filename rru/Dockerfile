@@ -1,4 +1,4 @@
-FROM base-ran-nfapi
+FROM base-nfapi
 
 VOLUME ["/config_files"]
 
