@@ -104,21 +104,22 @@ services:
         volumes:
             - "./config_files/:/config_files"
 
-    # ue:
-    #     build: ue
-    #     depends_on:
-    #         - upf
-    #         - smf
-    #         - amf
-    #         #- enb
-    #         - rru
-    #         - webapp
-    #     privileged: true
-    #     cap_add:
-    #         - NET_ADMIN
-    #     networks:
-    #         net1:
-    #             ipv4_address: 192.188.2.254
+    ue:
+        build: ue
+        depends_on:
+            - upf
+            - smf
+            - amf
+            #- enb
+            - rcc
+            - rru
+            - webapp
+        privileged: true
+        cap_add:
+            - NET_ADMIN
+        networks:
+            net1:
+                ipv4_address: 192.188.2.254
 networks:
     net1:
         ipam:
