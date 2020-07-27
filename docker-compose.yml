@@ -115,6 +115,7 @@ services:
             - rru
             - webapp
         privileged: true
+        stdin_open: true
         cap_add:
             - NET_ADMIN
         networks:
