@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "configuring UE data"
 sudo /root/ue/targets/bin/conf2uedata \
     -c /root/ue/openair3/NAS/TOOLS/ue_eurecom_test_sfr.conf \
@@ -12,6 +14,6 @@ echo "registering UEs"
 /root/ue/cmake_targets/ran_build/build/lte-uesoftmodem \
     -O /root/ue/ci-scripts/conf_files/ue.nfapi.conf \
     --L2-emul 3 \
-    --num-ues 1 \
+    --num-ues $NUM_UES \
     --nums_ue_thread 1 \
     --nokrnmod 1 > ue.log 2>&1
