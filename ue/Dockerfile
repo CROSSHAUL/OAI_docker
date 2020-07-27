@@ -1,5 +1,8 @@
 FROM laboraufg/ue-openairsim
 
+## Base image already handles following line
+# RUN /bin/bash -c "sed -i '102i\ host=NULL;\' /root/ue/openair3/NAS/UE/API/USER/user_api.c"
+RUN /bin/bash -c "source oaienv; /root/ue/cmake_targets/build_oai --UE"
 
 COPY ue.nfapi.conf /root/ue/ci-scripts/conf_files/ue.nfapi.conf
 COPY ue_eurecom_test_sfr.conf /root/ue/openair3/NAS/TOOLS/ue_eurecom_test_sfr.conf
