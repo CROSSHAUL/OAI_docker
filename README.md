@@ -128,6 +128,12 @@ The ones that are currently more explored by our colleagues are:
 1. RCC + RAU + RRU: without split
 2. RCC + RAU <=> RRU: one functioal split
 
+First build the base image:
+
+```sh
+docker build -t crosshaul:latest ./oaisim-base/
+```
+
 For both set ups, it is recommended to use the linux kernel in the low latency mode. So, make sure that the host
 has the required packages installed by running the following command:
 
