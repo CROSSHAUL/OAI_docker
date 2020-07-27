@@ -17,6 +17,8 @@ FROM laboraufg/ue-openairsim
 # RUN /bin/bash -c "source oaienv; /root/ue/cmake_targets/build_oai -I --UE --install-system-files --install-optional-packages"
 # RUN /bin/bash -c "source oaienv; /root/ue/cmake_targets/build_oai --UE"
 
+RUN apt-get update && apt-get install net-tools iputils-ping
+
 COPY ue.nfapi.conf /root/ue/ci-scripts/conf_files/ue.nfapi.conf
 COPY ue_eurecom_test_sfr.conf /root/ue/openair3/NAS/TOOLS/ue_eurecom_test_sfr.conf
 
