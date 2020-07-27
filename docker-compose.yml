@@ -58,50 +58,50 @@ services:
         networks:
             net1:
                 ipv4_address: 192.188.2.11
-#    enb:
-#        build: enb
-#        depends_on:
-#            - upf
-#            - smf
-#            - amf
-#        privileged: true
-#        cap_add:
-#            - NET_ADMIN
-#        networks:
-#            net1:
-#                ipv4_address: 192.188.2.253
+    enb:
+       build: enb
+       depends_on:
+           - upf
+           - smf
+           - amf
+       privileged: true
+       cap_add:
+           - NET_ADMIN
+       networks:
+           net1:
+               ipv4_address: 192.188.2.253
 
-    rru:
-        build: rru
-        depends_on:
-            - upf
-            - smf
-            - amf
-        privileged: true
-        stdin_open: true
-        cap_add:
-            - NET_ADMIN
-        networks:
-            net1:
-                ipv4_address: 192.188.2.252
-        volumes:
-            - "./config_files/:/config_files"
+    # rru:
+    #     build: rru
+    #     depends_on:
+    #         - upf
+    #         - smf
+    #         - amf
+    #     privileged: true
+    #     stdin_open: true
+    #     cap_add:
+    #         - NET_ADMIN
+    #     networks:
+    #         net1:
+    #             ipv4_address: 192.188.2.252
+    #     volumes:
+    #         - "./config_files/:/config_files"
 
-    rcc:
-        build: rcc
-        depends_on:
-            - upf
-            - smf
-            - amf
-        privileged: true
-        stdin_open: true
-        cap_add:
-            - NET_ADMIN
-        networks:
-            net1:
-                ipv4_address: 192.188.2.253
-        volumes:
-            - "./config_files/:/config_files"
+    # rcc:
+    #     build: rcc
+    #     depends_on:
+    #         - upf
+    #         - smf
+    #         - amf
+    #     privileged: true
+    #     stdin_open: true
+    #     cap_add:
+    #         - NET_ADMIN
+    #     networks:
+    #         net1:
+    #             ipv4_address: 192.188.2.253
+    #     volumes:
+    #         - "./config_files/:/config_files"
 
     ue:
         build: ue
@@ -109,9 +109,9 @@ services:
             - upf
             - smf
             - amf
-            #- enb
-            - rcc
-            - rru
+            - enb
+            # - rcc
+            # - rru
             - webapp
         privileged: true
         stdin_open: true
