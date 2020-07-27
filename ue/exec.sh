@@ -11,9 +11,10 @@ export NUM_UES=3
 echo "registering UEs"
 /root/register_ue.sh /root/ue/openair3/NAS/TOOLS/ue_eurecom_test_sfr.conf
 
+echo "running UE"
 /root/ue/cmake_targets/ran_build/build/lte-uesoftmodem \
     -O /root/ue/ci-scripts/conf_files/ue.nfapi.conf \
     --L2-emul 3 \
     --num-ues $NUM_UES \
     --nums_ue_thread 1 \
-    --nokrnmod 1 > ue.log 2>&1
+    --nokrnmod 1
