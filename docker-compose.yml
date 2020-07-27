@@ -93,7 +93,6 @@ services:
             - upf
             - smf
             - amf
-            - rru
         privileged: true
         stdin_open: true
         cap_add:
